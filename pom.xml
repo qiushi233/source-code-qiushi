@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <groupId>com.qiushi</groupId>
+    <artifactId>source-code-qiushi</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>spring</module>
+        <module>source-code-bom</module>
+    </modules>
+
+    <properties>
+        <!-- 模块默认编译级别 -->
+        <compile.default.version>1.8</compile.default.version>
+        <!--<source.code.version>${project.version}</source.code.version>-->
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- ====================内部引用 ===================== -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>spring</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>source-code-bom</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <!-- ====================外部引用 ===================== -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.8.1</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!-- 编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>${compile.default.version}</source>
+                    <target>${compile.default.version}</target>
+                    <compilerArgument>-parameters</compilerArgument>
+                    <encoding>UTF-8</encoding>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <repository>
+            <id>meituan-nexus-releases</id>
+            <name>Meituan Nexus Repository</name>
+            <url>http://maven.sankuai.com/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>meituan-nexus-snapshots</id>
+            <name>local private snapshots</name>
+            <url>http://maven.sankuai.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>

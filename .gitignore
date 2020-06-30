@@ -1,0 +1,14 @@
+#IDEA
+**/.idea/
+**/*.iml
+
+#Compile folder
+**/target/
+
+#log output
+**/logs/
+
+pom.xml.versionsBackup
+*.orig
+*.log.idea
+build
